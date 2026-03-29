@@ -1,0 +1,5 @@
+# gofmt fragment for Go
+format-command: '{{TOOL_PATH}}'
+format-stdin: true
+root-markers:
+  - go.mod

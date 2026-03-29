@@ -1,0 +1,8 @@
+{
+  "name": "draw-flow",
+  "description": "クラス名やメソッド名でフロー図を描く",
+  "version": "1.0.0",
+  "author": {
+    "name": "gkwon"
+  }
+}

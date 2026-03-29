@@ -1,0 +1,9 @@
+# Prettier fragment for JavaScript/TypeScript
+format-command: '{{TOOL_PATH}} --stdin-filepath ${INPUT}'
+format-stdin: true
+root-markers:
+  - .prettierrc
+  - .prettierrc.json
+  - .prettierrc.yml
+  - prettier.config.js
+  - package.json

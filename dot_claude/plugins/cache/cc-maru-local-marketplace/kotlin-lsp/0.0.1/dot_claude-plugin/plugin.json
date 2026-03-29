@@ -1,0 +1,5 @@
+{
+  "name": "kotlin-lsp",
+  "version": "0.0.1",
+  "description": "LSP server for Kotlin language support, providing code intelligence for .kt and .kts files."
+}

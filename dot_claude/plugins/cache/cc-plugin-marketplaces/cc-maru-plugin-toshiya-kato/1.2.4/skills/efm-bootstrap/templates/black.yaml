@@ -1,0 +1,6 @@
+# Black fragment for Python
+format-command: '{{TOOL_PATH}} --quiet -'
+format-stdin: true
+root-markers:
+  - pyproject.toml
+  - .black

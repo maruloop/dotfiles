@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo \"TIP: If there's context drift from your changes, run /initex\""
+          }
+        ]
+      }
+    ]
+  }
+}

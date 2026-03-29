@@ -1,0 +1,8 @@
+{
+  "name": "handover",
+  "description": "Type /handover at anypoint during a session, and Claude will look back thorough everything you two did together and generate a HANDOVER.md file in your current project folder.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Maru"
+  }
+}

@@ -1,0 +1,12 @@
+# Mypy fragment for Python
+lint-command: '{{TOOL_PATH}} --show-column-numbers --hide-error-context --no-color-output --no-error-summary ${INPUT}'
+lint-stdin: false
+lint-formats:
+  - '%f:%l:%c: %trror: %m'
+  - '%f:%l:%c: %tarning: %m'
+  - '%f:%l:%c: %tote: %m'
+root-markers:
+  - mypy.ini
+  - .mypy.ini
+  - pyproject.toml
+  - setup.cfg

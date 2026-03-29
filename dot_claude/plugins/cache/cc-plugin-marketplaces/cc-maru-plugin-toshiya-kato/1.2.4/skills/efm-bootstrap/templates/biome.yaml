@@ -1,0 +1,8 @@
+# Biome fragment for JavaScript/TypeScript
+lint-command: '{{TOOL_PATH}} lint --stdin-file-path=${INPUT}'
+lint-stdin: true
+format-command: '{{TOOL_PATH}} format --stdin-file-path=${INPUT}'
+format-stdin: true
+root-markers:
+  - biome.json
+  - biome.jsonc

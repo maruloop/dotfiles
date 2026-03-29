@@ -1,0 +1,8 @@
+{
+  "name": "cc-maru-plugin",
+  "description": "Maru's plugin to support development and operation",
+  "version": "1.2.4",
+  "author": {
+    "name": "Maru"
+  }
+}

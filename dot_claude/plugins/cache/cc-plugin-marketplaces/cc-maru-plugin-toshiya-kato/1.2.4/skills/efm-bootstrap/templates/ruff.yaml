@@ -1,0 +1,11 @@
+# Ruff fragment for Python
+lint-command: '{{TOOL_PATH}} check --output-format=text --stdin-filename ${INPUT} -'
+lint-stdin: true
+lint-formats:
+  - '%f:%l:%c: %m'
+format-command: '{{TOOL_PATH}} format --stdin-filename ${INPUT} -'
+format-stdin: true
+root-markers:
+  - ruff.toml
+  - .ruff.toml
+  - pyproject.toml

@@ -1,0 +1,9 @@
+# golangci-lint fragment for Go
+lint-command: '{{TOOL_PATH}} run --out-format=line-number --print-issued-lines=false ${INPUT}'
+lint-stdin: false
+lint-formats:
+  - '%f:%l:%c: %m'
+root-markers:
+  - .golangci.yml
+  - .golangci.yaml
+  - go.mod

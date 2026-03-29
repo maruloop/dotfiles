@@ -1,0 +1,11 @@
+# Checkstyle fragment for Java (via wrapper)
+lint-command: '{{WRAPPER_PATH}} ${INPUT}'
+lint-stdin: false
+lint-formats:
+  - '%f:%l:%c: %m'
+lint-ignore-exit-code: true
+root-markers:
+  - build.gradle
+  - build.gradle.kts
+  - pom.xml
+  - checkstyle.xml

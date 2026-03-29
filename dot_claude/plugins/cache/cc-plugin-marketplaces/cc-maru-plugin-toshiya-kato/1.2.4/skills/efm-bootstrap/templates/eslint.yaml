@@ -1,0 +1,11 @@
+# ESLint fragment for JavaScript/TypeScript
+lint-command: '{{TOOL_PATH}} --format unix --stdin --stdin-filename ${INPUT}'
+lint-stdin: true
+lint-formats:
+  - '%f:%l:%c: %m'
+root-markers:
+  - .eslintrc.js
+  - .eslintrc.json
+  - .eslintrc.yml
+  - eslint.config.js
+  - package.json

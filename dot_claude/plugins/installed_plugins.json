@@ -1,0 +1,215 @@
+{
+  "version": 2,
+  "plugins": {
+    "commit-commands@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/toshiya.kato/.claude/plugins/cache/claude-plugins-official/commit-commands/205b6e0b3036",
+        "version": "205b6e0b3036",
+        "installedAt": "2026-03-09T04:28:09.801Z",
+        "lastUpdated": "2026-03-09T04:28:09.801Z",
+        "gitCommitSha": "205b6e0b30366a969412d9aab7b99bea99d58db1"
+      }
+    ],
+    "code-review@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/toshiya.kato/.claude/plugins/cache/claude-plugins-official/code-review/205b6e0b3036",
+        "version": "205b6e0b3036",
+        "installedAt": "2026-03-09T04:28:09.801Z",
+        "lastUpdated": "2026-03-09T04:28:09.801Z",
+        "gitCommitSha": "205b6e0b30366a969412d9aab7b99bea99d58db1"
+      }
+    ],
+    "security-guidance@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/toshiya.kato/.claude/plugins/cache/claude-plugins-official/security-guidance/205b6e0b3036",
+        "version": "205b6e0b3036",
+        "installedAt": "2026-03-09T04:28:09.801Z",
+        "lastUpdated": "2026-03-09T04:28:09.801Z",
+        "gitCommitSha": "205b6e0b30366a969412d9aab7b99bea99d58db1"
+      }
+    ],
+    "dig@kuu-marketplace": [
+      {
+        "scope": "user",
+        "installPath": "/Users/toshiya.kato/.claude/plugins/cache/kuu-marketplace/dig/3.0.0",
+        "version": "3.0.0",
+        "installedAt": "2026-03-09T04:28:09.801Z",
+        "lastUpdated": "2026-03-09T04:28:09.801Z",
+        "gitCommitSha": "013ce2fdadecc9602edc9f5fd988a38b1baa8fcd"
+      }
+    ],
+    "deslop@kuu-marketplace": [
+      {
+        "scope": "user",
+        "installPath": "/Users/toshiya.kato/.claude/plugins/cache/kuu-marketplace/deslop/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-09T04:28:09.801Z",
+        "lastUpdated": "2026-03-09T04:28:09.801Z",
+        "gitCommitSha": "013ce2fdadecc9602edc9f5fd988a38b1baa8fcd"
+      }
+    ],
+    "fix-ci@kuu-marketplace": [
+      {
+        "scope": "user",
+        "installPath": "/Users/toshiya.kato/.claude/plugins/cache/kuu-marketplace/fix-ci/1.0.1",
+        "version": "1.0.1",
+        "installedAt": "2026-03-09T04:28:09.801Z",
+        "lastUpdated": "2026-03-09T04:28:09.801Z",
+        "gitCommitSha": "013ce2fdadecc9602edc9f5fd988a38b1baa8fcd"
+      }
+    ],
+    "pr-review-toolkit@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/toshiya.kato/.claude/plugins/cache/claude-plugins-official/pr-review-toolkit/205b6e0b3036",
+        "version": "205b6e0b3036",
+        "installedAt": "2026-03-09T04:28:09.801Z",
+        "lastUpdated": "2026-03-09T04:28:09.801Z",
+        "gitCommitSha": "205b6e0b30366a969412d9aab7b99bea99d58db1"
+      }
+    ],
+    "code-simplifier@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/toshiya.kato/.claude/plugins/cache/claude-plugins-official/code-simplifier/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-09T04:28:09.801Z",
+        "lastUpdated": "2026-03-09T04:28:09.801Z",
+        "gitCommitSha": "205b6e0b30366a969412d9aab7b99bea99d58db1"
+      }
+    ],
+    "draw-flow-gkwon@cc-plugin-marketplaces": [
+      {
+        "scope": "user",
+        "installPath": "/Users/toshiya.kato/.claude/plugins/cache/cc-plugin-marketplaces/draw-flow-gkwon/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-09T04:28:09.801Z",
+        "lastUpdated": "2026-03-09T04:28:09.801Z",
+        "gitCommitSha": "96d520fa22d722251386e1fadb87b869db0ac140"
+      }
+    ],
+    "claude-md-management@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/toshiya.kato/.claude/plugins/cache/claude-plugins-official/claude-md-management/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-09T04:28:09.801Z",
+        "lastUpdated": "2026-03-09T04:28:09.801Z",
+        "gitCommitSha": "205b6e0b30366a969412d9aab7b99bea99d58db1"
+      }
+    ],
+    "decomposition@kuu-marketplace": [
+      {
+        "scope": "user",
+        "installPath": "/Users/toshiya.kato/.claude/plugins/cache/kuu-marketplace/decomposition/1.1.0",
+        "version": "1.1.0",
+        "installedAt": "2026-03-09T04:28:09.801Z",
+        "lastUpdated": "2026-03-09T04:28:09.801Z",
+        "gitCommitSha": "013ce2fdadecc9602edc9f5fd988a38b1baa8fcd"
+      }
+    ],
+    "clarify@kuu-marketplace": [
+      {
+        "scope": "user",
+        "installPath": "/Users/toshiya.kato/.claude/plugins/cache/kuu-marketplace/clarify/1.0.5",
+        "version": "1.0.5",
+        "installedAt": "2026-03-09T04:28:09.801Z",
+        "lastUpdated": "2026-03-09T04:28:09.801Z",
+        "gitCommitSha": "013ce2fdadecc9602edc9f5fd988a38b1baa8fcd"
+      }
+    ],
+    "cc-maru-plugin-toshiya-kato@cc-plugin-marketplaces": [
+      {
+        "scope": "user",
+        "installPath": "/Users/toshiya.kato/.claude/plugins/cache/cc-plugin-marketplaces/cc-maru-plugin-toshiya-kato/1.2.4",
+        "version": "1.2.4",
+        "installedAt": "2026-03-09T04:28:09.801Z",
+        "lastUpdated": "2026-03-09T04:28:09.801Z",
+        "gitCommitSha": "96d520fa22d722251386e1fadb87b869db0ac140"
+      }
+    ],
+    "ralph-loop@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/toshiya.kato/.claude/plugins/cache/claude-plugins-official/ralph-loop/205b6e0b3036",
+        "version": "205b6e0b3036",
+        "installedAt": "2026-03-09T04:28:09.801Z",
+        "lastUpdated": "2026-03-09T04:28:09.801Z",
+        "gitCommitSha": "205b6e0b30366a969412d9aab7b99bea99d58db1"
+      }
+    ],
+    "typescript-lsp@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/toshiya.kato/.claude/plugins/cache/claude-plugins-official/typescript-lsp/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-09T04:28:09.801Z",
+        "lastUpdated": "2026-03-09T04:28:09.801Z",
+        "gitCommitSha": "205b6e0b30366a969412d9aab7b99bea99d58db1"
+      }
+    ],
+    "pyright-lsp@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/toshiya.kato/.claude/plugins/cache/claude-plugins-official/pyright-lsp/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-09T04:28:09.801Z",
+        "lastUpdated": "2026-03-09T04:28:09.801Z",
+        "gitCommitSha": "205b6e0b30366a969412d9aab7b99bea99d58db1"
+      }
+    ],
+    "gopls-lsp@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/toshiya.kato/.claude/plugins/cache/claude-plugins-official/gopls-lsp/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-09T04:28:09.801Z",
+        "lastUpdated": "2026-03-09T04:28:09.801Z",
+        "gitCommitSha": "205b6e0b30366a969412d9aab7b99bea99d58db1"
+      }
+    ],
+    "kotlin-lsp@cc-maru-local-marketplace": [
+      {
+        "scope": "user",
+        "installPath": "/Users/toshiya.kato/.claude/plugins/cache/cc-maru-local-marketplace/kotlin-lsp/0.0.1",
+        "version": "0.0.1",
+        "installedAt": "2026-03-09T04:28:09.801Z",
+        "lastUpdated": "2026-03-09T04:28:09.801Z",
+        "gitCommitSha": "a177da3ff57a63ce6f874f6a2bdc80dec33dbafa"
+      }
+    ],
+    "kotlin-lsp@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/toshiya.kato/.claude/plugins/cache/claude-plugins-official/kotlin-lsp/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-09T04:28:09.801Z",
+        "lastUpdated": "2026-03-09T04:28:09.801Z",
+        "gitCommitSha": "205b6e0b30366a969412d9aab7b99bea99d58db1"
+      }
+    ],
+    "handover@cc-maru-local-marketplace": [
+      {
+        "scope": "user",
+        "installPath": "/Users/toshiya.kato/.claude/plugins/cache/cc-maru-local-marketplace/handover/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-03-09T04:28:09.801Z",
+        "lastUpdated": "2026-03-09T04:28:09.801Z",
+        "gitCommitSha": "a177da3ff57a63ce6f874f6a2bdc80dec33dbafa"
+      }
+    ],
+    "skill-creator@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/toshiya.kato/.claude/plugins/cache/claude-plugins-official/skill-creator/205b6e0b3036",
+        "version": "205b6e0b3036",
+        "installedAt": "2026-03-25T06:11:56.164Z",
+        "lastUpdated": "2026-03-25T06:11:56.164Z",
+        "gitCommitSha": "205b6e0b30366a969412d9aab7b99bea99d58db1"
+      }
+    ]
+  }
+}
