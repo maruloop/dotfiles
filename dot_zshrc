@@ -1,8 +1,6 @@
 # bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
-. "$HOME/.local/bin/env"
-
 alias ls='eza'
 alias ll='ls -lh'                   # long + human-readable
 alias la='ls -la'                   # hidden files含む
