@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+
+# cl: safe wrapper for Claude Code that tries to restore TTY state on exit.
+# - Works in kitty/tmux and VS Code terminal
+# - Avoids running stty when stdin is not a TTY
+# - Preserves the original exit code
+
+cleanup() {
+  local code=$?
+  if [[ -t 0 ]]; then
+    stty sane 2>/dev/null || true
+    stty echo icanon 2>/dev/null || true
+  fi
+  return "$code"
+}
+
+trap cleanup EXIT
+trap 'exit 130' INT
+trap 'exit 143' TERM
+
+if ! command -v claude >/dev/null 2>&1; then
+  echo "cl: could not find 'claude' in PATH" >&2
+  exit 127
+fi
+
+if ! command -v fzf >/dev/null 2>&1; then
+  echo "cl: could not find 'fzf' in PATH" >&2
+  exit 127
+fi
+
+mode="$(
+  printf '%s\n' \
+    'plan' \
+    'dangerously-skip-permissions' \
+  | fzf --prompt='Claude mode> ' --height=10 --reverse --border
+)"
+
+# fzfでキャンセルしたとき
+if [[ -z "${mode:-}" ]]; then
+  echo "cl: cancelled" >&2
+  exit 130
+fi
+
+case "$mode" in
+  plan)
+    exec cage claude --permission-mode plan "$@"
+    ;;
+  dangerously-skip-permissions)
+    exec cage claude --dangerously-skip-permissions "$@"
+    ;;
+  *)
+    echo "cl: unknown mode: $mode" >&2
+    exit 1
+    ;;
+esac

@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+target=""
+
+# parse args
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    -t|--target)
+      target="$2"
+      shift 2
+      ;;
+    --)
+      shift
+      break
+      ;;
+    *)
+      shift
+      ;;
+  esac
+done
+
+# no target or no command → do nothing, success
+[[ -n "$target" && $# -gt 0 ]] || exit 0
+
+is_kitty() {
+  [[ -n "${KITTY_WINDOW_ID-}" ]] && return 0
+  [[ "${TERM-}" == "xterm-kitty" ]] && return 0
+  [[ -n "${KITTY_LISTEN_ON-}" ]] && return 0
+  return 1
+}
+
+matches_any_target() {
+  local t="${1}"
+  t="${t//,/ }"
+  t="${t//|/ }"
+
+  local w
+  for w in $t; do
+    case "$w" in
+      kitty) is_kitty && return 0 ;;
+      *) : ;; # unknown target -> ignore
+    esac
+  done
+  return 1
+}
+
+if matches_any_target "$target"; then
+  exec "$@"
+else
+  exit 0
+fi

@@ -1,0 +1,28 @@
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+#krew
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+#brew
+export PATH="/opt/homebrew/bin:$PATH"
+
+#vscode
+export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
+
+
+path_append ()  { path_remove $1; export PATH="$PATH:$1"; }
+path_prepend () { path_remove $1; export PATH="$1:$PATH"; }
+path_remove ()  { export PATH=`echo -n $PATH | awk -v RS=: -v ORS=: '$0 != "'$1'"' | sed 's/:$//'`; }
+
+export ENABLE_TOOL_SEARCH="true"
+export ENABLE_LSP_TOOL=1
+
+export PATH="$HOME/.local/bin:$PATH"
+
+export HOMEBREW_FORBIDDEN_FORMULAE="node python python3 pip npm pnpm yarn claude"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache "
+export XDG_DATA_HOME="$HOME/.local/share"
+
+[ -f "$HOME/.config/zsh/zprofile.work" ] && source "$HOME/.config/zsh/zprofile.work"

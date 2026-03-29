@@ -1,0 +1,83 @@
+# bun completions
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
+. "$HOME/.local/bin/env"
+
+alias ls='eza'
+alias ll='ls -lh'                   # long + human-readable
+alias la='ls -la'                   # hidden files含む
+alias l='ls -CF'                    # クイックビュー
+
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias c='clear'
+alias t='tree -C -L 2'              # カラー付きtree表示（`brew install tree` 必要）
+alias mkdirp='mkdir -p'             # 階層を一括作成
+
+alias d='docker'
+alias dps='docker ps'
+alias k='kubectl'
+
+alias cat='bat'
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="$HOME/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+eval "$(mise activate zsh --shims)"
+
+jq() { "$HOME/.local/bin/jq" "$@"; }
+
+ghqcd() {
+  cd $(ghq list --full-path | fzf)
+}
+
+mi() {
+  GITHUB_TOKEN="$(gh auth token --hostname github.com 2>/dev/null)" \
+    command mise "$@"
+}
+
+# zmx
+if [[ -n $ZMX_SESSION ]]; then
+  export PS1="[$ZMX_SESSION] ${PS1}"
+fi
+
+# difit
+gifit() {
+  local from_commit to_commit from_hash to_hash
+
+  from_commit=$(git log --oneline --decorate -100 --color=always | \
+    fzf \
+      --ansi \
+      --header "> difit \$TO \$FROM~1" \
+      --prompt "Select \$FROM>" \
+      --preview 'git log --oneline --decorate --color=always -1 {1}' \
+      --preview-window=top:3:wrap
+  ) || return
+  from_hash="${from_commit%% *}"
+
+  to_commit=$(git log --oneline --decorate -100 --color=always $from_hash~1.. | \
+    fzf \
+      --ansi \
+      --header "> difit \$TO $from_hash~1" \
+      --prompt "Select \$TO>" \
+      --preview 'git log --oneline --decorate --color=always -1 {1}' \
+      --preview-window=top:3:wrap
+  ) || return
+  to_hash="${to_commit%% *}"
+
+  difit "$to_hash" "$from_hash~1"
+}
+
+# ghq blobless clone
+ghq() {
+  if [[ "$1" == "get" ]]; then
+    shift
+    command ghq get --bare --look --partial blobless "$@"
+  else
+    command ghq "$@"
+  fi
+}
+
+eval "$(git wt --init zsh)"
+eval "$(starship init zsh)"

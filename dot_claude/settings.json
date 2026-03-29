@@ -1,0 +1,155 @@
+{
+  "permissions": {
+    "allow": [
+      "LSP(*)",
+      "Read(.env.example)",
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "Bash(grep:*)",
+      "Bash(mkdir:*)",
+      "Bash(touch:*)",
+      "Bash(ps:*)",
+      "Bash(go:*)",
+      "Bash(python test:*)",
+      "Bash(terraform test:*)",
+      "Bash(cat:*)",
+      "Bash(tail:*)",
+      "Bash(head:*)",
+      "Bash(pinact run:*)",
+      "Bash(pnpm install:*)",
+      "Bash(pnpm run:*)",
+      "Bash(pnpm test:*)",
+      "Bash(ansible-lint:*)",
+      "Bash(make fmt:*)",
+      "Bash(diff:*)",
+      "Bash(ansible-galaxy collection install:*)",
+      "Bash(ansible-galaxy role install:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git log:*)",
+      "Bash(gh pr list:*)",
+      "Bash(gh pr create:*)",
+      "Bash(gh pr edit:*)",
+      "Bash(gh pr view:*)",
+      "Bash(gh pr ready:*)",
+      "Bash(gh run view:*)",
+      "Bash(gh run list:*)",
+      "Bash(shellcheck:*)",
+      "Bash(tree:*)",
+      "Bash(trash-put:*)",
+      "mcp__monoread__read_url_content",
+      "Skill(commit-commands:*)",
+      "Bash(uv:*)"
+    ],
+    "deny": [
+      "Bash(sudo:*)",
+      "WebFetch"
+    ]
+  },
+  "model": "opus",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "termctl -t kitty -- kitty @ --to $KITTY_LISTEN_ON set-colors --match id:$KITTY_WINDOW_ID ~/.config/kitty/alien_blood.conf"
+          }
+        ]
+      },
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "guard-and-guide"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "FILE_PATH=$(jq -r '.tool_input.file_path'); if [ -n \"$FILE_PATH\" ] && [ \"$FILE_PATH\" != \"null\" ] && [ -f \"$FILE_PATH\" ]; then if [ -s \"$FILE_PATH\" ] && [ \"$(tail -c1 \"$FILE_PATH\" | wc -l)\" -eq 0 ]; then printf '\\n' >> \"$FILE_PATH\"; fi; fi"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "termctl -t kitty -- kitty @ --to $KITTY_LISTEN_ON set-colors --match id:$KITTY_WINDOW_ID ~/.config/kitty/cyberpunk.conf"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "termctl -t kitty -- kitty @ --to $KITTY_LISTEN_ON set-colors --match id:$KITTY_WINDOW_ID ~/.config/kitty/cyberpunk.conf"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "termctl -t kitty -- kitty @ --to $KITTY_LISTEN_ON set-colors --match id:$KITTY_WINDOW_ID ~/.config/kitty/alien_blood.conf"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "termctl -t kitty -- kitty @ --to $KITTY_LISTEN_ON set-colors --match id:$KITTY_WINDOW_ID ~/.config/kitty/default_theme.conf"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bunx -y ccstatusline@latest",
+    "padding": 0
+  },
+  "enabledPlugins": {
+    "commit-commands@claude-plugins-official": true,
+    "code-review@claude-plugins-official": true,
+    "security-guidance@claude-plugins-official": true,
+    "dig@kuu-marketplace": true,
+    "deslop@kuu-marketplace": true,
+    "fix-ci@kuu-marketplace": true,
+    "pr-review-toolkit@claude-plugins-official": true,
+    "code-simplifier@claude-plugins-official": true,
+    "draw-flow-gkwon@cc-plugin-marketplaces": true,
+    "claude-md-management@claude-plugins-official": true,
+    "decomposition@kuu-marketplace": true,
+    "clarify@kuu-marketplace": true,
+    "cc-maru-plugin-toshiya-kato@cc-plugin-marketplaces": true,
+    "ralph-loop@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true,
+    "gopls-lsp@claude-plugins-official": true,
+    "kotlin-lsp@cc-maru-local-marketplace": true,
+    "kotlin-lsp@claude-plugins-official": true,
+    "handover@cc-maru-local-marketplace": true,
+    "skill-creator@claude-plugins-official": true
+  },
+  "language": "English",
+  "alwaysThinkingEnabled": true,
+  "autoUpdatesChannel": "stable",
+  "skipDangerousModePermissionPrompt": true
+}

@@ -1,0 +1,46 @@
+#!/bin/bash
+set -euo pipefail
+
+readonly version="0.0.1"
+
+jq_cmd() {
+  mise which jq
+}
+
+for opt in ${@}
+do
+    case "${opt}" in
+        "-h")
+            echo A jq/jnv transparent wrapper
+            exit 0
+        ;;
+        "-v")
+            echo jq.sh version "${version}"
+        ;;
+    esac
+done
+
+case "$#" in
+  0)
+    if [ -t 0 ]; then
+      echo "error: no argument is passed" >&2
+      exit 1
+    else
+      cat | jnv
+    fi
+    ;;
+  1)
+    if [ -t 0 ]; then
+      jnv "$1"
+    else
+      cat | "$(jq_cmd)" "$1"
+    fi
+    ;;
+  *)
+    if [ -t 0 ]; then
+      "$(jq_cmd)" "$@"
+    else
+      cat | "$(jq_cmd)" "$@"
+    fi
+    ;;
+esac

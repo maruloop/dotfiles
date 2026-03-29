@@ -1,0 +1,60 @@
+presets:
+  bun:
+    allow:
+      - "$HOME/.bun/install/cache"
+
+  npm:
+    allow:
+      - "$HOME/.npm"
+      - "$HOME/.cache/npm"
+      - "$HOME/.npmrc"
+
+  gradle:
+    allow:
+      - "$HOME/.gradle"
+
+  ansible:
+    allow:
+      - "$HOME/.ansible"
+
+  docker:
+    allow:
+      - "$HOME/.docker"
+  base:
+    allow:
+      - "." # current
+      - path: "/tmp"
+        eval-symlinks: true
+      - "$XDG_CACHE_HOME" # ~/.cache
+      - "$XDG_DATA_HOME" # ~/.local/share
+      - "/private/tmp" # macos tmp directory
+      - "/var/folders" # macos mktemp
+      - "/Library/Caches" # macos app caches
+      - "$HOME/Library/Caches" # macos app caches
+      - "/dev/tty"
+      - "/dev/ttys*"
+
+  git-enabled:
+    allow:
+      - "$HOME/.ssh"
+    allow-git: true
+    allow-keychain: true # macOS only
+
+  claude-code:
+    allow-keychain: true
+    allow:
+      - "$HOME/.claude"
+      - "$HOME/.claude.json"
+      - "$HOME/.claude.json.lock"
+
+auto-presets:
+  - command: claude
+    presets:
+      - base
+      - claude-code
+      - bun
+      - npm
+      - git-enabled
+      - gradle
+      - docker
+      - ansible
