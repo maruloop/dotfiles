@@ -1,0 +1,92 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "kuu-marketplace",
+  "version": "1.0.3",
+  "description": "Kuu's personal Claude Code plugin marketplace",
+  "owner": {
+    "name": "Kuu",
+    "email": "fumiya.kume@hotmail.com"
+  },
+  "plugins": [
+    {
+      "name": "deslop",
+      "source": "./deslop",
+      "description": "Removes AI-generated code slop from code changes in the current branch",
+      "version": "1.0.0",
+      "author": {
+        "name": "Kuu"
+      },
+      "keywords": [
+        "code-cleanup",
+        "refactoring",
+        "ai-generated-code",
+        "deslop"
+      ]
+    },
+    {
+      "name": "dig",
+      "source": "./dig",
+      "description": "Deep exploratory interview to discover unknowns and strengthen plans",
+      "version": "3.0.0",
+      "author": {
+        "name": "Kuu"
+      },
+      "keywords": [
+        "planning",
+        "questions",
+        "assumptions",
+        "investigation",
+        "dig",
+        "interview"
+      ]
+    },
+    {
+      "name": "fix-ci",
+      "source": "./fix-ci",
+      "description": "Automatically diagnose and fix CI failures using sub-agent exploration",
+      "version": "1.0.0",
+      "author": {
+        "name": "Kuu"
+      },
+      "keywords": [
+        "ci",
+        "continuous-integration",
+        "debugging",
+        "automation",
+        "github-actions"
+      ]
+    },
+    {
+      "name": "clarify",
+      "source": "./clarify",
+      "description": "Create detailed specifications by iteratively clarifying unclear points through structured questions. Use when: After completing a plan when detailed requirements need clarification before implementation.",
+      "version": "1.0.5",
+      "author": {
+        "name": "Kuu"
+      },
+      "keywords": [
+        "planning",
+        "specification",
+        "clarification",
+        "plan-mode",
+        "requirements"
+      ]
+    },
+    {
+      "name": "decomposition",
+      "source": "./decomposition",
+      "description": "Decompose complex tasks into detailed, actionable todos with rich descriptions. Each todo is specific, achievable, and small enough to execute independently.",
+      "version": "1.1.0",
+      "author": {
+        "name": "Kuu"
+      },
+      "keywords": [
+        "planning",
+        "decomposition",
+        "todos",
+        "task-breakdown",
+        "actionable"
+      ]
+    }
+  ]
+}
