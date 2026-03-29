@@ -1,0 +1,75 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Usage:
+#   wt-sync-latest TARGET_PATH [TARGET_PATH ...]
+#
+# Behavior:
+# - Runs in the NEW worktree directory (wt.hook)
+# - For each target path:
+#   - If target already exists in CURRENT worktree: do nothing
+#   - Otherwise, find the newest same-path file from OTHER worktrees (by mtime)
+#   - Copy it into CURRENT worktree (binary-safe)
+
+[[ $# -ge 1 ]] || { echo "Usage: wt-sync-latest TARGET_PATH [TARGET_PATH ...]" >&2; exit 1; }
+
+cur_wt="$(pwd -P)"
+
+mapfile -t wt_paths < <(
+  git wt --json \
+  | jq -r '.. | objects | .path? | select(type=="string")' \
+  | sed '/^$/d' \
+  | sort -u
+)
+
+stat_mode="gnu"
+if stat -f '%m' "$0" >/dev/null 2>&1; then
+  stat_mode="bsd"
+fi
+
+mtime_epoch() {
+  local f="$1"
+  if [[ "$stat_mode" == "bsd" ]]; then
+    stat -f '%m' "$f"
+  else
+    stat -c '%Y' "$f"
+  fi
+}
+
+sync_one_target_latest() {
+  local target="$1"
+  local cur_file="$cur_wt/$target"
+
+  # If already exists in current worktree, leave it as-is
+  [[ -f "$cur_file" ]] && return 0
+
+  local best_file=""
+  local best_ts=-1
+
+  for wt in "${wt_paths[@]:-}"; do
+    [[ "$wt" == "$cur_wt" ]] && continue
+
+    local f="$wt/$target"
+    [[ -f "$f" ]] || continue
+
+    local ts
+    ts="$(mtime_epoch "$f")"
+    if (( ts > best_ts )); then
+      best_ts=$ts
+      best_file="$f"
+    fi
+  done
+
+  # Nothing found elsewhere -> do nothing
+  [[ -n "$best_file" ]] || return 0
+
+  local target_dir
+  target_dir="$(dirname "$target")"
+  [[ "$target_dir" == "." ]] || mkdir -p "$target_dir"
+
+  cp -p "$best_file" "$target"
+}
+
+for target in "$@"; do
+  sync_one_target_latest "$target"
+done
