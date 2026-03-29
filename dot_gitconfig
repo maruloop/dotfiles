@@ -1,0 +1,58 @@
+[include]
+	path = ~/.config/git/work.inc
+[user]
+        name = maruloop
+        email = 1451265+maruloop@users.noreply.github.com
+[color]
+        ui = true
+[push]
+        default = current
+[pull]
+        ff = only
+        rebase = false
+[core]
+        autocrlf = input
+        quotepath = false
+[alias]
+        st = status
+        df = diff
+	co = "!f(){ if [ $# -eq 0 ]; then claude --no-session-persistence --strict-mcp-config --model haiku -p \"/commit-commands:commit without Co-Authored-By\"; else git commit \"$@\"; fi; }; f"
+        br = branch
+        ps = push
+        pl = pull
+        ck = checkout
+        pr = "!f() { if [ $# -lt 1 ]; then echo \"Usage: git pr <id> [<remote>]  # assuming <remote>[=origin] is on GitHub\"; else git checkout -q \"$(git rev-parse --verify HEAD)\" && git fetch -fv \"${2:-origin}\" pull/\"$1\"/head:pr/\"$1\" && git checkout pr/\"$1\"; fi; }; f"
+        rbsync = "!sh -c '\n\
+        set -e\n\
+        git diff --quiet || { echo \"Working tree dirty\"; exit 1; }\n\
+        git fetch --prune origin\n\
+        base=$(git rev-parse --abbrev-ref --symbolic-full-name @{upstream} 2>/dev/null || true)\n\
+        if [ -z \"$base\" ]; then\n\
+        # 1) try origin/HEAD (works if it exists)\n\
+        base=$(git symbolic-ref -q --short refs/remotes/origin/HEAD 2>/dev/null || true)\n\
+        fi\n\
+        if [ -z \"$base\" ]; then\n\
+        # 2) derive default branch from remote info\n\
+        head=$(git remote show origin 2>/dev/null | sed -n \"s/^  HEAD branch: //p\")\n\
+        if [ -n \"$head\" ]; then base=\"origin/$head\"; fi\n\
+        fi\n\
+        if [ -z \"$base\" ]; then\n\
+        # 3) last resort\n\
+        if git show-ref --verify --quiet refs/remotes/origin/main; then base=origin/main;\n\
+        elif git show-ref --verify --quiet refs/remotes/origin/master; then base=origin/master;\n\
+        else echo \"Could not determine base branch\"; exit 1; fi\n\
+        fi\n\
+        echo \"Rebasing onto $base\"\n\
+        git rebase \"$base\"\n\
+        '"
+	vsconflicts = !code -n $(git diff --name-only --diff-filter=U)
+	sync-default = "!f() { b=\"$(gh repo view --json defaultBranchRef -q .defaultBranchRef.name)\" || { echo 'failed: gh repo view'; return 1; }; [ -n \"$b\" ] || { echo 'failed: default branch is empty'; return 1; }; git fetch origin --prune \"$b:$b\" || { echo \"failed: fetch origin $b:$b\"; return 1; }; git symbolic-ref HEAD \"refs/heads/$b\" || { echo \"failed: set HEAD -> $b\"; return 1; }; echo \"HEAD -> $b ($(git rev-parse --short \"$b\"))\"; }; f"
+	sync-main = "!f() {\n  unset GIT_DIR GIT_WORK_TREE GIT_COMMON_DIR\n  if [ -d .worktrees/main ]; then\n    git -C .worktrees/main pull --ff-only origin main\n  else\n    echo \".worktrees/main not found\"\n    return 1\n  fi\n}; f"
+[filesystem "AdoptOpenJDK|11.0.9.1|/dev/disk1s1"]
+        timestampResolution = 9000 nanoseconds
+        minRacyThreshold = 0 nanoseconds
+[wt]
+	basedir = .worktrees
+	remover = trash-put
+	hook = wt-sync-latest .claude/settings.local.json
+	hook = "dir=$(git rev-parse --git-common-dir); script=\"$(chezmoi source-path)/templates/${dir#$HOME/}/setup.sh.tmpl\"; if [ -f \"$script\" ]; then tmp=$(mktemp); chezmoi execute-template < \"$script\" > \"$tmp\" && sh \"$tmp\"; rm \"$tmp\"; fi"
