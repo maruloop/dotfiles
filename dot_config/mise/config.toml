@@ -33,3 +33,4 @@ kubeseal = "0.36.1"
 rust = "1.94.0"
 "cargo:https://github.com/kawarimidoll/guard-and-guide" = { version = "tag:26.3.26", bin = "guard-and-guide" }
 starship = "1.24.2"
+bat = "0.26.1"
